@@ -34,6 +34,7 @@ def place_order():
     # create order record
     order = Order(user_id=uid, total=total, status='PENDING')
     db.session.add(order)
+    db.session.flush()  # populate order.id before it's referenced below
 
     # create order item records
     order_items_payload = []

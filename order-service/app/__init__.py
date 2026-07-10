@@ -2,7 +2,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
+from sqlalchemy.exc import OperationalError, ProgrammingError, IntegrityError
 import os
+import time
 
 db  = SQLAlchemy()
 jwt = JWTManager()
@@ -15,10 +17,28 @@ def create_app():
     db.init_app(app)
     jwt.init_app(app)
 
-    with app.app_context():
-        db.create_all()
-
     from .routes import order_bp
     app.register_blueprint(order_bp, url_prefix='/orders')
+
+    with app.app_context():
+        from . import models
+
+        # Wait for Postgres to be ready to accept connections — depends_on
+        # only waits for the container to start, not for the DB to be up.
+        for attempt in range(10):
+            try:
+                db.engine.connect().close()
+                break
+            except OperationalError:
+                if attempt == 9:
+                    raise
+                time.sleep(1)
+
+        try:
+            db.create_all()
+        except (ProgrammingError, IntegrityError):
+            # Another gunicorn worker won the race to create the tables
+            # on a fresh database — safe to ignore, tables now exist.
+            db.session.rollback()
 
     return app
