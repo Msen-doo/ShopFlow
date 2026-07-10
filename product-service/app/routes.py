@@ -31,6 +31,7 @@ def get_product(product_id):
 @product_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_product():
+    print("Creating product...")
     data = request.get_json()
     if not data or not data.get('name') or not data.get('price'):
         return jsonify({'error': 'name and price are required'}), 400
