@@ -32,7 +32,7 @@ services:
     image: redis:7-alpine
  
   localstack:
-    image: localstack/localstack:latest
+    image: localstack/localstack:3.0.0
     environment:
       SERVICES: sqs
       DEFAULT_REGION: eu-west-1
@@ -55,6 +55,7 @@ services:
       AWS_REGION:          eu-west-1
       AWS_ACCESS_KEY_ID:   test
       AWS_SECRET_ACCESS_KEY: test
+      JWT_SECRET_KEY: local_dev_secret_change_in_prod
     depends_on: [postgres-product, localstack]
     ports: ['8002:8000']
  
@@ -71,7 +72,7 @@ services:
     environment:
       DATABASE_URL:        postgresql://shopflow:shopflow_secret@postgres-order/orderdb
       SQS_ORDER_QUEUE_URL: http://localstack:4566/000000000000/shopflow-orders.fifo
-      JWT_SECRET_KEY:      local_dev_secret_change_in_prod
+      JWT_SECRET_KEY: local_dev_secret_change_in_prod
       AWS_REGION:          eu-west-1
       AWS_ACCESS_KEY_ID:   test
       AWS_SECRET_ACCESS_KEY: test
