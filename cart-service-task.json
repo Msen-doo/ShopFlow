@@ -1,0 +1,27 @@
+{
+  "family": "shopflow-cart-service",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::423389601516:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "cart-service",
+      "image": "423389601516.dkr.ecr.eu-west-1.amazonaws.com/shopflow/cart-service:latest",
+      "portMappings": [{"containerPort": 8000, "protocol": "tcp"}],
+      "environment": [
+        {"name": "REDIS_URL", "value": "redis://shopflow-redis.3xhub7.0001.euw1.cache.amazonaws.com:6379"},
+        {"name": "JWT_SECRET_KEY", "value": "local_dev_secret_change_in_prod"}
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/shopflow/cart-service",
+          "awslogs-region": "eu-west-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

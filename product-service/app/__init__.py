@@ -17,7 +17,11 @@ def create_app():
     jwt.init_app(app)
 
     from .routes import product_bp
-    app.register_blueprint(product_bp, url_prefix='/products')
+    app.register_blueprint(product_bp, url_prefix='/api/products')
+
+    @app.route('/health')
+    def health():
+        return {'status': 'ok'}, 200
 
     with app.app_context():
         from . import models

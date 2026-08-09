@@ -1,0 +1,46 @@
+=== ECS SERVICES STATUS ===
+-----------------------------------------------------------------------------------------------------------------------------------
+|                                                        DescribeServices                                                         |
++--------------------------+---------+----+----+----------------------------------------------------------------------------------+
+|  shopflow-user-service   |  ACTIVE |  1 |  1 |  arn:aws:ecs:eu-west-1:423389601516:task-definition/shopflow-user-service:1      |
+|  shopflow-product-service|  ACTIVE |  1 |  1 |  arn:aws:ecs:eu-west-1:423389601516:task-definition/shopflow-product-service:1   |
+|  shopflow-cart-service   |  ACTIVE |  1 |  1 |  arn:aws:ecs:eu-west-1:423389601516:task-definition/shopflow-cart-service:1      |
+|  shopflow-order-service  |  ACTIVE |  1 |  1 |  arn:aws:ecs:eu-west-1:423389601516:task-definition/shopflow-order-service:4     |
++--------------------------+---------+----+----+----------------------------------------------------------------------------------+
+
+=== TARGET GROUP HEALTH ===
+-- shopflow-user-tg --
+----------------------------
+|   DescribeTargetHealth   |
++------------+-------------+
+|  10.0.1.31 |  draining   |
+|  10.0.3.17 |  unhealthy  |
++------------+-------------+
+-- shopflow-product-tg --
+--------------------------
+|  DescribeTargetHealth  |
++------------+-----------+
+|  10.0.1.47 |  healthy  |
++------------+-----------+
+-- shopflow-cart-tg --
+---------------------------
+|  DescribeTargetHealth   |
++-------------+-----------+
+|  10.0.1.209 |  healthy  |
++-------------+-----------+
+-- shopflow-order-tg --
+--------------------------
+|  DescribeTargetHealth  |
++------------+-----------+
+|  10.0.1.75 |  healthy  |
++------------+-----------+
+
+=== AUTO SCALING TARGETS ===
+---------------------------------------------------------
+|                DescribeScalableTargets                |
++---------------------------------------------+----+----+
+|  service/shopflow/shopflow-order-service    |  1 |  4 |
+|  service/shopflow/shopflow-user-service     |  1 |  4 |
+|  service/shopflow/shopflow-product-service  |  1 |  4 |
+|  service/shopflow/shopflow-cart-service     |  1 |  4 |
++---------------------------------------------+----+----+

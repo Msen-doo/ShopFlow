@@ -12,6 +12,10 @@ def create_app():
     jwt.init_app(app)
 
     from .routes import cart_bp
-    app.register_blueprint(cart_bp, url_prefix='/cart')
+    app.register_blueprint(cart_bp, url_prefix='/api/cart')
+
+    @app.route('/health')
+    def health():
+        return {'status': 'ok'}, 200
 
     return app
