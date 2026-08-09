@@ -1,0 +1,43 @@
+==============================
+SHOPFLOW API TEST EVIDENCE
+Date: Sun Aug  9 19:19:54 WCAST 2026
+ALB: http://shopflow-alb-218604079.eu-west-1.elb.amazonaws.com
+==============================
+
+--- TEST 1: Register User ---
+{"id":"98b81cf0-4369-49fc-9008-ba25db2e1b14"}
+
+Status: 201
+
+--- TEST 2: Login ---
+{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc4NjI5OTU5NSwianRpIjoiNjI2NDRiNTQtZDc1OC00YjRiLThlNzgtZGZiZmZjZGMwYzBkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Ijk4YjgxY2YwLTQzNjktNDlmYy05MDA4LWJhMjVkYjJlMWIxNCIsIm5iZiI6MTc4NjI5OTU5NSwiY3NyZiI6IjJjYjNlODEyLTk3ZGEtNDAxMi1hZmE2LTQxYWFlZTcyZTQ5YyIsImV4cCI6MTc4NjMwMzE5NX0.r0ZMkzSGpBRKrs6lSvm7YRkmzrgG5xdOjY-Ivw2sMUM"}
+
+--- TEST 3: Get Products (no auth) ---
+{"items":[{"created_at":"2026-08-09T13:10:45.636886","description":"","id":"ad9de7df-f01d-4fc0-9431-22f7ed940044","name":"Test Product","price":19.99,"stock":10},{"created_at":"2026-08-09T13:12:48.478089","description":"","id":"dc33e9a0-c3b5-4dab-a427-f264aa8b2d0b","name":"SQS Test Product","price":9.99,"stock":5},{"created_at":"2026-08-09T13:19:22.077241","description":"","id":"e532fede-5fe9-49b2-accf-92d97aeca538","name":"SQS Test 2","price":5.0,"stock":5},{"created_at":"2026-08-09T13:20:40.973243","description":"","id":"071403e3-0d33-4019-bd1a-623c72b290dd","name":"SQS Test 3","price":3.0,"stock":5},{"created_at":"2026-08-09T13:24:04.740086","description":"","id":"ea0fc4a4-e648-43be-8466-fe5fbe5cabfb","name":"Load Test Product 2-0","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:04.862915","description":"","id":"f94d4d00-4309-4fbc-9b57-5b55eb89cebe","name":"Load Test Product 1-0","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:09.847645","description":"","id":"55ea22bc-97dc-4e07-8a6b-d4a4bddced96","name":"Load Test Product 1-1","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:09.942090","description":"","id":"3d8a2402-2b2f-4ba6-adac-f0433bb54d0e","name":"Load Test Product 2-1","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:13.641391","description":"","id":"c9e1f72e-52f0-42f3-9b99-dadb1a7c5c7c","name":"Load Test Product 1-2","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:13.937259","description":"","id":"6b0f9a4f-af79-4751-b852-fd07b7e2987f","name":"Load Test Product 2-2","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:17.239460","description":"","id":"7f005116-d126-4a22-97cf-954590c435c1","name":"Load Test Product 1-3","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:17.651263","description":"","id":"5382b330-d32c-4644-a7e4-005564b50d0a","name":"Load Test Product 2-3","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:20.540350","description":"","id":"00c0d659-5ae7-4711-afb9-694df61355ee","name":"Load Test Product 1-4","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:21.139165","description":"","id":"7ab337b4-0518-403c-a38f-d51258e85f23","name":"Load Test Product 2-4","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:22.851606","description":"","id":"d8298b0d-3a4d-438a-9d96-70ee652cee81","name":"Load Test Product 1-5","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:33.659866","description":"","id":"0edfa61d-dcb4-48ea-9492-8b691763adec","name":"Load Test Product 3-0","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:36.067791","description":"","id":"65583a0f-d227-43d0-9884-3e4cdf0bd307","name":"Load Test Product 3-1","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:38.451380","description":"","id":"7c38bb9c-f797-4918-b723-4b150cab0afa","name":"Load Test Product 3-2","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:39.941027","description":"","id":"a8e3a473-3134-4b1e-93dc-5e1b3cd162ea","name":"Load Test Product 2-0","price":9.99,"stock":100},{"created_at":"2026-08-09T13:24:41.061924","description":"","id":"15f88533-5739-41e1-9950-80f1a7bc528b","name":"Load Test Product 3-3","price":9.99,"stock":100}],"page":1,"pages":14,"total":270}
+
+Status: 200
+
+--- TEST 4: Create Product (with JWT) ---
+{"created_at":"2026-08-09T18:19:56.403067","description":"","id":"6be9f2e1-dd49-4149-81b4-5576cb6ca295","name":"Dissertation Demo Product","price":29.99,"stock":100}
+
+Status: 201
+
+--- TEST 5: Add to Cart (with JWT) ---
+{"message":"item added to cart","product_id":"6be9f2e1-dd49-4149-81b4-5576cb6ca295","quantity":2}
+
+Status: 200
+
+--- TEST 6: Place Order (with JWT) ---
+{"order_id":"6dd891ff-8378-4c8d-bb1a-95e6028160b5","status":"PENDING","total":59.98}
+
+Status: 201
+
+--- TEST 7: Health Checks ---
+/api/users/health: 404
+/api/products/health: 404
+/api/cart/health: 404
+/api/orders/health: 401
+
+==============================
+ALL TESTS COMPLETE
+==============================
