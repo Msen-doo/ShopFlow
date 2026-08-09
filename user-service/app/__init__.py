@@ -21,7 +21,7 @@ def create_app():
     from .routes import auth_bp
     app.register_blueprint(auth_bp, url_prefix='/api/users')
 
-    @app.route('/health')
+    @app.route('/api/users/health')
     def health():
         return {'status': 'ok'}, 200
 

@@ -1,0 +1,19 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["ssm:GetParameters"],
+      "Resource": [
+        "arn:aws:ssm:eu-west-1:423389601516:parameter/shopflow/user-service/database-url",
+        "arn:aws:ssm:eu-west-1:423389601516:parameter/shopflow/product-service/database-url",
+        "arn:aws:ssm:eu-west-1:423389601516:parameter/shopflow/order-service/database-url"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["kms:Decrypt"],
+      "Resource": "arn:aws:kms:eu-west-1:423389601516:key/b5cdba69-cf07-407c-a578-5ea2b5f65810"
+    }
+  ]
+}

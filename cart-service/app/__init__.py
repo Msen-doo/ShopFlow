@@ -14,7 +14,7 @@ def create_app():
     from .routes import cart_bp
     app.register_blueprint(cart_bp, url_prefix='/api/cart')
 
-    @app.route('/health')
+    @app.route('/api/cart/health')
     def health():
         return {'status': 'ok'}, 200
 

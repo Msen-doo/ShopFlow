@@ -41,3 +41,18 @@ Status: 201
 ==============================
 ALL TESTS COMPLETE
 ==============================
+
+==============================
+FIX: /health endpoints moved under API prefix
+Date: Sun Aug  9 19:34:13 WCAST 2026
+==============================
+
+--- TEST 7 (RE-RUN AFTER FIX): Health Checks ---
+/api/users/health: {"status":"ok"}
+200
+/api/products/health: {"status":"ok"}
+200
+/api/cart/health: {"status":"ok"}
+200
+/api/orders/health: {"status":"ok"}
+200

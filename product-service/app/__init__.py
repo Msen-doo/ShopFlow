@@ -19,7 +19,7 @@ def create_app():
     from .routes import product_bp
     app.register_blueprint(product_bp, url_prefix='/api/products')
 
-    @app.route('/health')
+    @app.route('/api/products/health')
     def health():
         return {'status': 'ok'}, 200
 

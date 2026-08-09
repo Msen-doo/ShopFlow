@@ -20,7 +20,7 @@ def create_app():
     from .routes import order_bp
     app.register_blueprint(order_bp, url_prefix='/api/orders')
 
-    @app.route('/health')
+    @app.route('/api/orders/health')
     def health():
         return {'status': 'ok'}, 200
 

@@ -11,8 +11,10 @@
       "image": "423389601516.dkr.ecr.eu-west-1.amazonaws.com/shopflow/user-service:latest",
       "portMappings": [{"containerPort": 8000, "protocol": "tcp"}],
       "environment": [
-        {"name": "DATABASE_URL", "value": "postgresql://shopflow:REDACTED_SET_VIA_SECRETS_MANAGER@shopflow-db.cxoe80seswle.eu-west-1.rds.amazonaws.com/userdb"},
         {"name": "JWT_SECRET_KEY", "value": "local_dev_secret_change_in_prod"}
+      ],
+      "secrets": [
+        {"name": "DATABASE_URL", "valueFrom": "arn:aws:ssm:eu-west-1:423389601516:parameter/shopflow/user-service/database-url"}
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
