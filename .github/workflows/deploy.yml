@@ -5,8 +5,8 @@ on:
     branches: [main]
 
 env:
-  AWS_REGION: ${{ secrets.AWS_REGION }}
-  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+  AWS_REGION: eu-west-1
+  AWS_ACCOUNT_ID: "423389601516"
 
 jobs:
   build-and-deploy:
